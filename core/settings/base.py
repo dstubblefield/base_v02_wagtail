@@ -9,6 +9,7 @@ INSTALLED_APPS = [
     "home",
     "app_blocks",
     "app_hooks",
+    "app_pages",
     "app_snippets",
     "blog",
     "categories",
@@ -22,7 +23,6 @@ INSTALLED_APPS = [
     "products",
     "services",
     "showcase",
-    "site_settings",
     "staff",
     "testimonials",
     
