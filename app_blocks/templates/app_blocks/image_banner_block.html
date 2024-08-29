@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+
+<section class="my-10">
+  <div>{% image self.image fill-1600x600 %}</div>
+
+  {% if self.caption %}
+  <div class="text-xs font-thin">{{ self.caption}}</div>
+  {% endif %}
+</section>

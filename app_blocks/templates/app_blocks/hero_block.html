@@ -1,0 +1,51 @@
+{% load wagtailimages_tags wagtailcore_tags static %}
+
+
+{% for hero in self %}
+{% image hero.value.image_desktop fill-1920x1200 as desktop_img %}
+{% image hero.value.image_mobile fill-400x600 as mobile_img %}
+
+<section id="hero-{{ hero.id }}" class="hero-section relative flex h-screen items-center justify-center bg-cover bg-center"
+    style="background-image: url({{desktop_img.url}});">
+    <style>
+        @media (max-width: 786px) {
+            #hero-{{ hero.id }} {
+                background-image: url('{{mobile_img.url}}') !important;
+            }
+        }
+    </style>
+
+    <div class="absolute inset-0 bg-black" style="background: rgba(255, 255, 255, 0.1)"></div>
+    
+       <div class="flex flex-col absolute top-40 left-[50%] translate-x-[-50%]">
+        <div class="text-center max-w-2xl">
+            <h1 class=" text-neutral-900 text-5xl m-auto">{{ hero.value.title }}</h1>
+            <div class="m-auto pt-1 text-2xl text-neutral-900">{{ hero.value.text }}</div>
+        </div>
+        </div>
+        <div class="flex flex-col md:flex-row md:space-x-4 absolute bottom-[80px] left-[50%] translate-x-[-50%]">
+
+            <a href="{{ hero.value.page_chooser.url }}">
+            <button class="uppercase bg-neutral-700 w-96 text-white rounded-full h-10 md:w-60">{{ hero.value.button }}</button>
+            </a>
+            
+        </div>
+        <div class="absolute left-[50%] translate-x[-50%] bottom-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-8 h-8 animate-bounce">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{% endfor %}
+
+</section>
+

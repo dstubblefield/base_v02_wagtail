@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags wagtailmarkdown wagtail_cache %}
+
+{% block content %}
+{% image self.hero_image_desktop fill-1520x1200 as desktop_img %}
+{% image self.hero_image_mobile fill-600x900 as mobile_img %}
+    
+  
+<div id="hero"class="relative mt-[-100px]  mx-auto max-w-screen-3xl sm:px-0 lg:px-0 bg-cover bg-center" style="background-image: url({{ desktop_img.url }}); height: 75vh;">
+  <style>
+        @media (max-width: 786px) {
+            #hero {
+                background-image: url('{{mobile_img.url}}') !important;
+            }
+        }
+    </style>
+  <div class="absolute inset-0 bg-neutral-900 bg-opacity-20"></div> <!-- Adjusted opacity for readability -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 text-center p-4"> <!-- Adjusted positioning -->
+    <h2 class="text-outline mb-4 text-3xl text-neutral-100 sm:text-5xl">
+        {{ page.title }}
+    </h2>
+    
+  </div>
+</div>
+<div class="bg-neutral-900">
+  <div class="mx-auto max-w-3xl px-6 py-8 sm:py-12 lg:px-8">
+    
+    <div class="max-w-2xl text-base leading-7 text-neutral-300">{{ page.about|richtext }}
+
+    </div>
+    <div class="my-10">
+      
+        {% for faq in page.body %}
+          {% include_block page.body %}
+        {% endfor %}
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

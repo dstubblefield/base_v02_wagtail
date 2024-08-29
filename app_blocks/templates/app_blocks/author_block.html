@@ -1,0 +1,18 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% image self.image fill-320x320 as img %}
+<div class="relative mt-8 flex items-center gap-x-4 pb-3">
+            <img src="{{img.url}}" alt="{{ self.name }}" class="h-10 w-10 rounded-full" />
+            <div class="text-sm leading-6">
+              <p class="font-semibold text-neutral-100">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  {{ self.name }}
+                </a>
+              </p>
+              <p class="text-neutral-300">
+                {{ self.title }}
+
+              </p>
+            </div>
+          </div>

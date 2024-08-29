@@ -1,0 +1,86 @@
+{% load wagtailimages_tags static %}
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-neutral-300 bg-opacity-0 text-neutral-900 backdrop-blur-lg dark:text-neutral-900 bg-white-nav">
+    
+    <section class="custom-nav mx-auto flex max-w-5xl items-center justify-between p-4">
+        <!-- Logo for Light Mode -->
+        <a href="/" class="block pl-6">
+            <img class="h-auto w-36 md:w-48 dark:hidden" src="{% static 'logo/logo-optimized.svg' %}"
+                alt="Built-Mor Buildings" />
+            <!-- Logo for Dark Mode -->
+            <img class="hidden h-auto w-56 md:w-56 dark:block" src="{% static 'logo/logo-optimized.svg' %}"
+                alt="Built-Mor Buildings" />
+        </a>
+        <!-- Hamburger Menu Button -->
+        <button id="hamburger-button" class="ml-auto md:hidden h-8 w-8 relative cursor-pointer">
+            <!-- Icon or SVG for Hamburger Menu -->
+            <!-- &#9776; -->
+            <div
+                class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-white after:transition-all after:duration-500 after:content-['']">
+            </div>
+        </button>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="hidden md:flex items-center space-x-4 lg:space-x-8 text-sm">
+
+
+            <div class="group whitespace-nowrap">
+                <a href="#" class="navbar-btn font-semibold">
+                    What We Offer
+                    <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" />
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <!-- More sub-items -->
+                </div>
+            </div>
+            <div class="group whitespace-nowrap">
+                <a href="#" class="navbar-btn font-semibold">
+                    Showcase
+                    <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" />
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-neutral-200">Sub-item 1</a>
+                    <!-- More sub-items -->
+                </div>
+            </div>
+            <a href="#" class="navbar-btn font-semibold">Services</a>
+            <a href="#" class="navbar-btn font-semibold">Contact</a>
+
+
+
+
+        </nav>
+        
+    </section>
+
+
+    <section id="mobile-menu"
+        class="top-68 absolute hidden w-full origin-top text-neutral-100 animate-open-menu flex-col justify-center bg-black text-2xl opacity-90 md:hidden">
+        <!-- <button class="text-8xl self-end px-6">
+                    &times;
+                </button> -->
+        <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
+            <a href="/" class="w-full py-6 text-center hover:opacity-90">Home</a>
+            <a href="/showcase/" class="w-full py-6 text-center hover:opacity-90">Our Projects</a>
+            <a href="/what-we-build/" class="w-full py-6 text-center hover:opacity-90">What We Build</a>
+            <a href="#" class="w-full py-6 text-center hover:opacity-90">Contact Us</a>
+            <a href="/blog/" class="w-full py-6 text-center hover:opacity-90">Blog</a>
+        </nav>
+    </section>
+</header>
