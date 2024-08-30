@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
+
+{% block content %}
+
+{% image self.hero_image_desktop fill-1920x600 as hero_img %}
+<div class="relative mt-[-100px]  mx-auto max-w-screen-3xl sm:px-0 lg:px-0 bg-cover bg-center"
+  style="background-image: url({{hero_img.url}}); height: 75vh;">
+  <div class="absolute inset-0 bg-black bg-opacity-20"></div> <!-- Adjusted opacity for readability -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 text-center p-4"> <!-- Adjusted positioning -->
+    <h2 class="text-outline mb-4 text-3xl text-white sm:text-5xl">
+      {{ self.title }}
+    </h2>
+    
+
+
+  </div>
+</div>
+
+<div class="py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl">
+      <h2 class="mt-2 text-lg leading-8 text-neutral-900 dark:text-neutral-200 ">Posts tagged with {{ tag|title }}</h2>
+      
+      <div class="mt-10 space-y-16 border-t border-gray-100 pt-10 sm:mt-16 sm:pt-16">
+
+
+        {% for post in posts %}
+        <article class="flex max-w-xl flex-col items-start justify-between">
+          <div class="text-neutral-900 dark:text-neutral-200 flex items-center gap-x-4 text-xs">
+            <time datetime="2020-03-16" class="text-neutral-900 dark:text-neutral-200 ">{{ post.last_published_at }}</time>
+            <div>
+            {% for tag in post.tags.all %}
+            <a href="{% routablepageurl page "tags" tag=tag.slug %}"
+              class="relative z-10 rounded-full bg-neutral-700 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{tag}} - {{tag.slug}}</a>
+            {% endfor %}
+            </div>
+          </div>
+          <div class="group relative">
+            <h3
+              class="mt-3 text-lg font-semibold leading-6 text-neutral-900 dark:text-neutral-200  group-hover:text-neutral-500">
+              <a href="{% pageurl post %}">
+                <span class="absolute inset-0"></span>
+                {{ post.title }}
+              </a>
+            </h3>
+            {% if post.body %}
+            <div class="mt-5 line-clamp-3 text-sm leading-6 text-neutral-900 dark:text-neutral-200 ">{{post.body }}</div>
+          </div>
+          {% else %}
+          <div class="mt-5 line-clamp-3 text-sm leading-6 text-neutral-900 dark:text-neutral-200 ">{{post.markdown_field }}</div>
+          </div>
+          {% endif %}
+          <div class="relative mt-8 flex items-center gap-x-4">
+            <img src="" alt="" class="h-10 w-10 rounded-full bg-gray-50">
+            <div class="text-sm leading-6">
+              <p class="font-semibold text-neutral-900 dark:text-neutral-200 ">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  {{ post.author }}
+                </a>
+              </p>
+              <p class="text-neutral-900 dark:text-neutral-200 ">
+                {{ post.author.title }}
+              </p>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

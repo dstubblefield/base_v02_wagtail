@@ -1,5 +1,4 @@
 # admin_hooks/wagtail_hooks.py
-
 from wagtail import hooks
 from django.templatetags.static import static
 from django.utils.html import format_html
@@ -30,16 +29,12 @@ assets_menu = Menu(
 )
 
 @hooks.register("register_assets_menu")
-def register_assets_menu():
+def register_images_menu():
     return register_images_menu_item()
 
 @hooks.register("register_assets_menu")
 def register_documents_menu():
     return register_documents_menu_item()
-
-@hooks.register("register_assets_menu")
-def register_collections_menu():
-    return register_collections_menu_item()
 
 @hooks.register("register_admin_menu_item")
 def register_assets_submenu():

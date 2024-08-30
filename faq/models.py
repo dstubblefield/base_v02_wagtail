@@ -1,3 +1,5 @@
+# faq/models.py
+
 from django.db import models
 from wagtail.images import get_image_model
 from wagtail.models import Page
