@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailmarkdown %}
+
+{% block content %}
+{% image page.product_hero_desktop fill-1536x1152 as custom_img %}
+    
+    
+{% image self.product_hero_desktop fill-1920x900 as hero_img %}
+<div class="relative mt-[-100px]  mx-auto max-w-screen-3xl sm:px-0 lg:px-0 bg-cover bg-center" style="background-image: url({{hero_img.url}}); height: 75vh;">
+  <div class="absolute inset-0 bg-black bg-opacity-20"></div> <!-- Adjusted opacity for readability -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 text-center p-4"> <!-- Adjusted positioning -->
+    <h2 class="mb-4 text-3xl text-white sm:text-5xl">
+        {{ self.title }}
+    </h2>
+    <div class="max-w-sm mx-auto md:max-w-lg">
+        <p class="text-white">
+            {{ self.category_intro|richtext }}
+        </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  <main class="mx-auto mt-8 max-w-2xl px-4 pb-16 sm:px-6 sm:pb-24 lg:max-w-7xl lg:px-8">
+    <div class="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
+      <div class="lg:col-span-5 lg:col-start-8">
+        <div class="flex justify-between">
+          <h1 class="text-xl font-medium text-gray-900">{{page.title}}</h1>
+          
+        </div>
+        <!-- Reviews -->
+        <div class="mt-4">
+          <h2 class="sr-only">Reviews</h2>
+          <div class="flex items-center">
+            <p class="text-sm text-gray-700 dark:text-neutral-200">
+            
+              <span class="sr-only"> out of 5 stars</span>
+            </p>
+            <div class="ml-1 flex items-center">
+              <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
+              <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-200 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ml-4 text-sm text-gray-300">·</div>
+            <div class="ml-4 flex">
+              <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image gallery -->
+      <div class="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
+        <h2 class="sr-only">Images</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
+            
+          <img src="{{ custom_img.url }}" alt="Horse Barn." class="lg:col-span-2 lg:row-span-2 rounded-lg">
+          
+          
+        </div>
+      </div>
+
+      <div class="mt-8 lg:col-span-5">
+        <form>
+          <!-- Color picker -->
+          <div>
+            <h2 class="text-sm font-medium text-gray-900">Stuff Here</h2>
+
+            
+          </div>
+
+          <!-- Size picker -->
+          <div class="mt-8">
+            
+            Some stuff here
+          
+          </div>
+
+          
+        </form>
+
+        <!-- Product details -->
+        <div class="mt-10">
+          <h2 class="text-sm font-medium text-gray-900">Description</h2>
+
+          <div class="prose prose-sm mt-4 text-gray-500">
+             {{ page.description}}
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-gray-200 pt-8">
+          <h2 class="text-sm font-medium text-gray-900">Building Size:</h2>
+
+          20x40x10
+        </div>
+
+        <!-- Policies -->
+        <section aria-labelledby="policies-heading" class="mt-10">
+          <h2 id="policies-heading" class="sr-only">**</h2>
+
+          <dl class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div class="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+              <dt>
+                
+              </dt>
+              <dd class="mt-1 text-sm text-gray-500">**</dd>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+              <dt>
+                
+                <span class="mt-4 text-sm font-medium text-gray-900">***</span>
+              </dt>
+              <dd class="mt-1 text-sm text-gray-500">**</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    
+
+    <!-- Related products -->
+    <section aria-labelledby="related-heading" class="mt-16 sm:mt-24">
+      <h2 id="related-heading" class="text-lg font-medium text-gray-900">Related Projects</h2>
+
+      <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div class="group relative">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
+            <img src="{{ custom_img.url }}" alt="Front of men&#039;s Basic Tee in white." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+          </div>
+          <div class="mt-4 flex justify-between">
+            <div>
+              <h3 class="text-sm text-gray-700">
+                <a href="#">
+                  <span aria-hidden="true" class="absolute inset-0"></span>
+                  Horse Shelter
+                </a>
+              </h3>
+              <p class="mt-1 text-sm text-gray-500">Make a new habit</p>
+            </div>
+            <p class="text-sm font-medium text-gray-900"></p>
+          </div>
+        </div>
+
+        <!-- More products... -->
+      </div>
+    </section>
+  </main>
+
+  
+</div>
+
+
+{% endblock content %}

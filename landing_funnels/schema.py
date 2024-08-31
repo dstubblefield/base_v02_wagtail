@@ -1,13 +1,16 @@
-# File: landing_funnels/schema.py
-
+#landing_funnels/schema.py
 import graphene
 from graphene_django.types import DjangoObjectType
+from wagtail.rich_text import RichText
 from .models import LandingPage, LandingPageArea, LandingIndexPage
 from taggit.models import Tag
+
 
 class TagType(DjangoObjectType):
     class Meta:
         model = Tag
+        fields = ['name']
+
 
 class LandingPageType(DjangoObjectType):
     tags = graphene.List(TagType)
@@ -15,21 +18,26 @@ class LandingPageType(DjangoObjectType):
 
     class Meta:
         model = LandingPage
-        exclude = ('tags', 'body')  # Exclude tags and body from auto conversion
+        exclude = ['tags', 'body']
 
     def resolve_tags(self, info):
         return self.tags.all()
 
     def resolve_body(self, info):
-        return str(self.body)  # Simplified resolver for StreamField
+        return self.body.stream_data if self.body else ""
+
 
 class LandingPageAreaType(DjangoObjectType):
     class Meta:
         model = LandingPageArea
+        fields = '__all__'
+
 
 class LandingIndexPageType(DjangoObjectType):
     class Meta:
         model = LandingIndexPage
+        fields = '__all__'
+
 
 class Query(graphene.ObjectType):
     landing_page = graphene.Field(LandingPageType, id=graphene.Int())

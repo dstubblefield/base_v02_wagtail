@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% load static wagtailcore_tags wagtailimages_tags %} 
+
+{% block content %}
+
+{% image self.subcategory_hero_desktop fill-1920x900 as hero_img %}
+<div class="relative mt-[-100px]  mx-auto max-w-screen-3xl sm:px-0 lg:px-0 bg-cover bg-center" style="background-image: url({{hero_img.url}}); height: 75vh;">
+  <div class="absolute inset-0 bg-black bg-opacity-20"></div> <!-- Adjusted opacity for readability -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 text-center p-4"> <!-- Adjusted positioning -->
+    <h2 class="mb-4 text-3xl text-white sm:text-5xl">
+        {{ self.title }}
+    </h2>
+    <div class="max-w-sm mx-auto md:max-w-lg">
+        <p class="text-white">
+            {{ self.category_intro|richtext }}
+        </p>
+    </div>
+  </div>
+</div>
+
+<div class="mx-auto max-w-screen-2xl sm:px-0 lg:px-0 mb-20 ">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      
+     <main class="mx-5 mb-10">
+      
+ 
+
+        <!-- Product grid -->
+        <section aria-labelledby="products-heading" class="mt-8">
+          <h2 id="products-heading" class="sr-only">Products</h2>
+
+          <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+            {% for catagory in products %}
+            {% image catagory.product_hero_desktop fill-800x600 as hero_img %}
+            <a href="{% pageurl catagory %}" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2">
+                <img src="{{ hero_img.url }}" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <div class="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
+                <h3>{{ catagory.title }}</h3>
+                <div>{{ catagory.intro }}</div>
+              </div>
+              <p class="mt-1 text-sm italic text-gray-500">TAGS</p>
+            </a>
+            {% endfor %}
+            
+
+            <!-- More products... -->
+          </div>
+        </section>
+
+        
+       
+      </div>
+    </main>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

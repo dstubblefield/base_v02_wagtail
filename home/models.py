@@ -8,6 +8,7 @@ from wagtail.admin.panels import FieldPanel
 class HomePage(Page):
     max_count = 1
     template = "home/home_page.html"
+    parent_page_types = ['wagtailcore.Page']
     
     body = StreamField([
         ('rich_text', custom_blocks.RichTextBlock()),
